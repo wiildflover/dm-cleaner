@@ -1,0 +1,135 @@
+{
+  "name": "wildflover-dm-cleaner",
+  "version": "1.0.0",
+  "description": "Wildflover DM Cleaner - Professional Discord message management tool.",
+  "main": "./out/main/index.js",
+  "author": "Wildflover",
+  "productName": "Wildflover DM Cleaner",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "build:win": "npm run build && electron-builder --win",
+    "build:portable": "npm run build && electron-builder --win portable",
+    "build:installer": "npm run build:win",
+    "build:all": "npm run build && npm run build:installer && npm run build:portable",
+    "build:mac": "npm run build && electron-builder --mac",
+    "build:linux": "npm run build && electron-builder --linux",
+    "preview": "electron-vite preview",
+    "typecheck": "tsc --noEmit",
+    "postinstall": "electron-builder install-app-deps",
+    "icon:convert": "node tools/icon-converter.js",
+    "deploy": "node tools/github-deploy.js",
+    "deploy:auto": "node tools/github-auto-deploy.js",
+    "deploy:win": "powershell -ExecutionPolicy Bypass -File tools/github-setup.ps1",
+    "deploy:unix": "bash tools/github-setup.sh"
+  },
+  "dependencies": {
+    "@electron-toolkit/preload": "^3.0.1",
+    "@electron-toolkit/utils": "^3.0.0",
+    "axios": "^1.6.2",
+    "clsx": "^2.0.0",
+    "framer-motion": "^10.16.4",
+    "lucide-react": "^0.292.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwind-merge": "^2.0.0"
+  },
+  "optionalDependencies": {
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@electron-toolkit/eslint-config-prettier": "^2.0.0",
+    "@electron-toolkit/eslint-config-ts": "^2.0.0",
+    "@electron-toolkit/tsconfig": "^1.0.1",
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.39",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.0",
+    "autoprefixer": "^10.4.16",
+    "electron": "^27.1.3",
+    "electron-builder": "^24.6.4",
+    "electron-vite": "^1.0.29",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.0"
+  },
+  "build": {
+    "appId": "com.wildflover.dmcleaner",
+    "productName": "Wildflover DM Cleaner",
+    "executableName": "Wildflover-DM-Cleaner",
+    "copyright": "Copyright © 2025 Wildflover",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "electronDownload": {
+      "cache": "./electron-cache"
+    },
+    "win": {
+      "icon": "icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}-${version}-Setup.${ext}",
+      "publisherName": "Wildflover"
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}-Portable.${ext}",
+      "requestExecutionLevel": "user",
+      "unpackDirName": "Wildflover-DM-Cleaner-Portable"
+    },
+    "mac": {
+      "icon": "icon.png",
+      "category": "public.app-category.utilities"
+    },
+    "linux": {
+      "icon": "icon.png",
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Utility"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "allowElevation": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Wildflover DM Cleaner",
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico",
+      "license": "build/license.txt",
+      "deleteAppDataOnUninstall": true,
+      "runAfterFinish": true,
+      "menuCategory": true
+    },
+    "files": [
+      "out/**/*",
+      "icon.ico",
+      "icon.png"
+    ],
+    "extraResources": [
+      {
+        "from": "icon.ico",
+        "to": "icon.ico"
+      },
+      {
+        "from": "icon.png",
+        "to": "icon.png"
+      }
+    ]
+  }
+}
