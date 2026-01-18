@@ -35,11 +35,11 @@ Wildflover DM Cleaner is a powerful desktop application designed for efficient D
 
 ### Application Interface
 
-<img src="../../../preview_1.png" alt="Wildflover DM Cleaner - Main Interface" width="800"/>
+<img src="https://github.com/wiildflover/discord-dm-cleaner/blob/main/preview_1.png?raw=true" alt="Wildflover DM Cleaner - Main Interface" width="800"/>
 
 *Main dashboard with conversation list and control panel*
 
-<img src="../../../preview_2.png" alt="Wildflover DM Cleaner - Cleaning Process" width="800"/>
+<img src="https://github.com/wiildflover/discord-dm-cleaner/blob/main/preview_2.png?raw=true" alt="Wildflover DM Cleaner - Cleaning Process" width="800"/>
 
 *Real-time message cleaning with progress tracking and detailed logs*
 
